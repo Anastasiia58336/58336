@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyFollow : MonoBehaviour
 {
-    public Transform player;
     public float speed = 2f;
-    void Update()
+    private Rigidbody2D rb;
+    private Transform player;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+    void FixedUpdate()
     {
         if (player == null) return;
-        Vector2 direction = (player.position - transform.position).normalized;
-        transform.position += (Vector3)direction * speed * Time.deltaTime;
+        Vector2 direction = ((Vector2)player.position - rb.position).normalized;
+        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
     }
 }

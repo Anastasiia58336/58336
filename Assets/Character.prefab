@@ -307,8 +307,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4413695676329348539}
   - {fileID: 4660245688427340093}
+  - {fileID: 4413695676329348539}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8656040751421769192
@@ -556,7 +556,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: 0
+  flashDuration: 0.1
+  flashCount: 5
+  deathUI: {fileID: 0}
 --- !u!114 &5195692287857979398
 MonoBehaviour:
   m_ObjectHideFlags: 0
