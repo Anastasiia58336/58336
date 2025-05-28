@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5837438577441301787}
   - component: {fileID: 5217361648722669881}
   - component: {fileID: -1865562655121710723}
+  - component: {fileID: 8272499437496226838}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dcea51d6065d64246aeec467afeff684, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.9528302, g: 0.91237986, b: 0.91237986, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -206,3 +207,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  flashDuration: 0.15
+--- !u!114 &8272499437496226838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688931205255017862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57802e509fc0874283a8800b2009090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 8805690857077824488, guid: 8479af39fe93d7f4f81d64f8698d919a, type: 3}
+  speed: 2
