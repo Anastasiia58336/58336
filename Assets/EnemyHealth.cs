@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
-{
+public class EnemyHealth : MonoBehaviour { 
+
     public int health = 5;
 
-    public void TakeDamage(int dagame)
-    {
+    public void TakeDamage(int damage) { 
+    
 
-        health += dagame;
+        health -= damage;
         Debug.Log("Enamy took damage. HP: " + health);
 
         if(health <= 0)
