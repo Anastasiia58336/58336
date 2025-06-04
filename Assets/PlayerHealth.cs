@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -9,8 +8,8 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
     public float flashDuration = 0.1f;
     public int flashCount = 5;
-    public GameObject deathUI; 
-    public SpriteRenderer[] heartSprites;
+    public GameObject deathUI;
+    public Image[] heartIcons;
     private SpriteRenderer spriteRenderer;
     private bool isDead = false;
     void Start()
@@ -25,13 +24,24 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isDead) return;
         currentHealth -= damage;
-        Debug.Log("Player HP: " + currentHealth);
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         StartCoroutine(Flash());
         UpdateHearts();
         if (currentHealth <= 0)
         {
             Die();
         }
+    }
+    public void Heal(int amount)
+    {
+        if (isDead) return;
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHearts();
+    }
+    public bool IsDead()
+    {
+        return isDead;
     }
     IEnumerator Flash()
     {
@@ -45,9 +55,9 @@ public class PlayerHealth : MonoBehaviour
     }
     void UpdateHearts()
     {
-        for (int i = 0; i < heartSprites.Length; i++)
+        for (int i = 0; i < heartIcons.Length; i++)
         {
-            heartSprites[i].enabled = (i < currentHealth);
+            heartIcons[i].enabled = (i < currentHealth);
         }
     }
     void Die()
@@ -55,6 +65,6 @@ public class PlayerHealth : MonoBehaviour
         isDead = true;
         if (deathUI != null)
             deathUI.SetActive(true);
-        gameObject.SetActive(false); 
+        gameObject.SetActive(false);
     }
 }
