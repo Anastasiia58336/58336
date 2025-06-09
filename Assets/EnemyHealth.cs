@@ -1,39 +1,42 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class EnemyHealth : MonoBehaviour { 
-
+using UnityEngine.UI; 
+public class EnemyHealth : MonoBehaviour
+{
     public int health = 5;
-
+    public Slider healthSlider; 
     public float flashDuration = 0.1f;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
-
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
-    }
-    public void TakeDamage(int damage) { 
-    
-
-        health -= damage;
-        Debug.Log("Enamy took damage. HP: " + health);
-        StartCoroutine(FlashRed());
-
-        if(health <= 0)
+        if (healthSlider != null)
         {
+            healthSlider.maxValue = health;
+            healthSlider.value = health;
+        }
+    }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log("Enemy took damage. HP: " + health);
+        if (healthSlider != null)
+        {
+            healthSlider.value = health;
+        }
+        StartCoroutine(FlashRed());
+        if (health <= 0)
+        {
+            FindObjectOfType<MessageUI>()?.ShowMessage("You killed the enemy!");
             Destroy(gameObject);
-            FindObjectOfType<MessageUI>().ShowMessage("You killed the enemy!");
-     
+        }
     }
-    }
-    System.Collections.IEnumerator FlashRed()
+    IEnumerator FlashRed()
     {
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(flashDuration);
         spriteRenderer.color = originalColor;
     }
 }
-
