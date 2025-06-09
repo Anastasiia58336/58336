@@ -11,8 +11,9 @@ public class Key : MonoBehaviour
             PlayerInventory inventory = other.GetComponent<PlayerInventory>();
             if (inventory != null)
             {
-                inventory.hasKey = true;
+                inventory.hasKey = true;            
                 Destroy(gameObject);
+                FindObjectOfType<MessageUI>().ShowMessage("Key found!");
             }
         }
     }

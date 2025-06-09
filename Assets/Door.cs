@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Door : MonoBehaviour
 {
-    public string nextSceneName; 
+    public string nextSceneName;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -11,12 +11,11 @@ public class Door : MonoBehaviour
             PlayerInventory inventory = other.GetComponent<PlayerInventory>();
             if (inventory != null && inventory.hasKey)
             {
-                Debug.Log("Door is opened!");
-                Destroy(gameObject); 
+                UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneName);
             }
             else
             {
-                Debug.Log("Door is locked. Need a key");
+                FindObjectOfType<MessageUI>().ShowMessage("You need a key!");
             }
         }
     }

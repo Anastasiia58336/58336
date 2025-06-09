@@ -25,8 +25,9 @@ public class EnemyHealth : MonoBehaviour {
         if(health <= 0)
         {
             Destroy(gameObject);
-
-        }
+            FindObjectOfType<MessageUI>().ShowMessage("You killed the enemy!");
+     
+    }
     }
     System.Collections.IEnumerator FlashRed()
     {
