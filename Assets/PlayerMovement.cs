@@ -1,13 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 moveInput;
+    
+    public int lastMoveDirection = 1;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -16,7 +17,12 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
-        moveInput.Normalize(); 
+        moveInput.Normalize();
+        
+        if (moveInput.x > 0)
+            lastMoveDirection = 1;
+        else if (moveInput.x < 0)
+            lastMoveDirection = -1;
     }
     void FixedUpdate()
     {

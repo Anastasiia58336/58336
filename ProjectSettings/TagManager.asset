@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Enemy
   - Healing
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Bullet
   - Water
   - UI
   - 
