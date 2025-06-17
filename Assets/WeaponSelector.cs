@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,13 +12,17 @@ public class WeaponSelector : MonoBehaviour
     public GameObject orbWeapon;
     public GameObject shootingWeapon;
 
+    public GameObject spaceHintText;
+
     void Start()
     {
         weaponSelectionPanel.SetActive(true);
         orbWeapon.SetActive(false);
         shootingWeapon.SetActive(false);
 
-       
+        if (spaceHintText != null)
+            spaceHintText.SetActive(false); 
+
         Time.timeScale = 0f;
 
         orbButton.onClick.AddListener(SelectOrb);
@@ -34,7 +37,12 @@ public class WeaponSelector : MonoBehaviour
         shootingWeapon.SetActive(false);
         weaponSelectionPanel.SetActive(false);
 
-        
+        if (spaceHintText != null)
+        {
+            spaceHintText.SetActive(true);
+            StartCoroutine(HideTextAfterDelay(2f));
+        }
+
         Time.timeScale = 1f;
     }
 
@@ -46,7 +54,14 @@ public class WeaponSelector : MonoBehaviour
         shootingWeapon.SetActive(true);
         weaponSelectionPanel.SetActive(false);
 
-        
+        FindObjectOfType<MessageUI>()?.ShowMessage("Press <Space> to shoot!");
+
         Time.timeScale = 1f;
+    }
+
+    IEnumerator HideTextAfterDelay(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay); 
+        spaceHintText.SetActive(false);
     }
 }

@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  isBoss: 0
   healthSlider: {fileID: 0}
   flashDuration: 0.1
 --- !u!4 &167064009 stripped
@@ -736,6 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  isBoss: 0
   healthSlider: {fileID: 0}
   flashDuration: 0.1
 --- !u!4 &212060667 stripped
@@ -755,7 +757,7 @@ GameObject:
   - component: {fileID: 231175320}
   - component: {fileID: 231175319}
   - component: {fileID: 231175318}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MessageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -778,8 +780,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.71, y: 0}
-  m_SizeDelta: {x: 208.7, y: 30}
+  m_AnchoredPosition: {x: 37.92, y: -1.6}
+  m_SizeDelta: {x: 247.12, y: 33.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231175318
 MonoBehaviour:
@@ -917,7 +919,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &280027384
 RectTransform:
@@ -1851,6 +1853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  isBoss: 0
   healthSlider: {fileID: 1814137630}
   flashDuration: 0.1
 --- !u!4 &1401810594 stripped
@@ -2167,7 +2170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15.75, y: 253.5}
+  m_AnchoredPosition: {x: -15.75, y: 184}
   m_SizeDelta: {x: 96.93, y: 97.174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2102874024
@@ -2584,9 +2587,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 145710355110399038, guid: 1726f0228fd72d5449fe20d2c72cfa07, type: 3}
+      propertyPath: messageUI
+      value: 
+      objectReference: {fileID: 231175318}
+    - target: {fileID: 145710355110399038, guid: 1726f0228fd72d5449fe20d2c72cfa07, type: 3}
       propertyPath: orbWeapon
       value: 
       objectReference: {fileID: 1672876763}
+    - target: {fileID: 145710355110399038, guid: 1726f0228fd72d5449fe20d2c72cfa07, type: 3}
+      propertyPath: spaceHintText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 459930503879141820, guid: 1726f0228fd72d5449fe20d2c72cfa07, type: 3}
       propertyPath: m_Camera
       value: 

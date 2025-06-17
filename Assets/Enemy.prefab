@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthSlider: {fileID: 0}
   flashDuration: 0.15
 --- !u!114 &8272499437496226838
 MonoBehaviour:
