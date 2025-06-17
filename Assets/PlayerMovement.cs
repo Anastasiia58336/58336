@@ -18,11 +18,17 @@ public class PlayerMovement : MonoBehaviour
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize();
-        
+
         if (moveInput.x > 0)
+        {
             lastMoveDirection = 1;
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
         else if (moveInput.x < 0)
+        {
             lastMoveDirection = -1;
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
     }
     void FixedUpdate()
     {
