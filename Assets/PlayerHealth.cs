@@ -10,11 +10,13 @@ public class PlayerHealth : MonoBehaviour
     public int flashCount = 5;
     public GameObject deathUI;
     public Image[] heartIcons;
+    public bool CanTakeDamage;
     private SpriteRenderer spriteRenderer;
     private bool isDead = false;
     void Start()
     {
         currentHealth = maxHealth;
+        CanTakeDamage = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (deathUI != null)
             deathUI.SetActive(false);
@@ -23,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isDead) return;
+        if (!CanTakeDamage) return;
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         StartCoroutine(Flash());
@@ -45,6 +48,7 @@ public class PlayerHealth : MonoBehaviour
     }
     IEnumerator Flash()
     {
+        CanTakeDamage = false;
         for (int i = 0; i < flashCount; i++)
         {
             spriteRenderer.color = new Color(1, 1, 1, 0.3f);
@@ -52,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
             spriteRenderer.color = new Color(1, 1, 1, 1f);
             yield return new WaitForSeconds(flashDuration);
         }
+        CanTakeDamage = true;
     }
     void UpdateHearts()
     {
